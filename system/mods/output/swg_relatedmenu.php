@@ -231,15 +231,15 @@ function direct_mods_related_output_relatedmenu ($f_menu,$f_data)
 
 					if ($f_entry_array['members'])
 					{
-						if (($f_entry_array['members'])&&(direct_class_function_check ($direct_classes['kernel'],"dvirtual_usertype_get_int")))
+						if (($f_entry_array['members'])&&(direct_class_function_check ($direct_classes['kernel'],"v_usertype_get_int")))
 						{
-							if ($direct_classes['kernel']->dvirtual_usertype_get_int ($direct_settings['user']['type'])) { $f_rights_check = true; }
+							if ($direct_classes['kernel']->v_usertype_get_int ($direct_settings['user']['type'])) { $f_rights_check = true; }
 						}
 					}
 
 					if ((!$f_rights_check)&&($f_entry_array['group_right']))
 					{
-						if ((direct_class_function_check ($direct_classes['kernel'],"dvirtual_group_user_check_right"))&&(isset ($f_entry_array['group_right']))) { $f_rights_check = $direct_classes['kernel']->dvirtual_group_user_check_right ($f_entry_array['group_right']); }
+						if ((direct_class_function_check ($direct_classes['kernel'],"v_group_user_check_right"))&&(isset ($f_entry_array['group_right']))) { $f_rights_check = $direct_classes['kernel']->v_group_user_check_right ($f_entry_array['group_right']); }
 					}
 
 					if (($f_active_check)&&($f_rights_check))
