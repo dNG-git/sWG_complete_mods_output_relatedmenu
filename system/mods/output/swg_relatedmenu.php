@@ -216,6 +216,10 @@ function direct_mods_related_output_relatedmenu ($f_menu,$f_data)
 					}
 
 					if (!$f_entry_array['title']) { $f_active_check = false; }
+
+					if (isset ($f_entry_array['image'])) { $f_entry_array['image'] = $f_entry_array['image']; }
+					else { $f_entry_array['image'] = ""; }
+
 					if (!$f_entry_array['link']) { $f_active_check = false; }
 
 					$f_rights_check = false;
@@ -240,7 +244,7 @@ function direct_mods_related_output_relatedmenu ($f_menu,$f_data)
 
 					if (($f_active_check)&&($f_rights_check))
 					{
-						if ($f_entry_array['level']) { $direct_classes['output']->options_insert ($f_entry_array['level'],$f_menu,$f_entry_array['link'],$f_entry_array['title'],$f_entry_array['image'],$f_entry_array['link_type']); }
+						if (isset ($f_entry_array['level'])) { $direct_classes['output']->options_insert ($f_entry_array['level'],$f_menu,$f_entry_array['link'],$f_entry_array['title'],$f_entry_array['image'],$f_entry_array['link_type']); }
 						else { $direct_classes['output']->options_insert (6,$f_menu,$f_entry_array['link'],$f_entry_array['title'],$f_entry_array['image'],$f_entry_array['link_type']); }
 					}
 				}
