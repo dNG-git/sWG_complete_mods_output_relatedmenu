@@ -28,7 +28,6 @@ this program; if not, write to the Free Software Foundation, Inc.,
 ----------------------------------------------------------------------------
 http://www.direct-netware.de/redirect.php?licenses;gpl
 ----------------------------------------------------------------------------
-$Id$
 #echo(sWGmodsOutputRelatedmenuVersion)#
 sWG/#echo(__FILEPATH__)#
 ----------------------------------------------------------------------------
