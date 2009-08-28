@@ -215,31 +215,13 @@ function direct_mods_related_output_relatedmenu ($f_menu,$f_data)
 					}
 
 					if (!$f_entry_array['title']) { $f_active_check = false; }
-
-					if (isset ($f_entry_array['image'])) { $f_entry_array['image'] = $f_entry_array['image']; }
-					else { $f_entry_array['image'] = ""; }
-
+					$f_entry_array['image'] = ((isset ($f_entry_array['image'])) ? $f_entry_array['image'] : "");
 					if (!$f_entry_array['link']) { $f_active_check = false; }
 
 					$f_rights_check = false;
-
-					if ($f_entry_array['guests'])
-					{
-						if (($f_entry_array['guests'])&&(($direct_settings['user']['type'] == "ex")||($direct_settings['user']['type'] == "gt"))) { $f_rights_check = true; }
-					}
-
-					if ($f_entry_array['members'])
-					{
-						if (($f_entry_array['members'])&&(direct_class_function_check ($direct_classes['kernel'],"v_usertype_get_int")))
-						{
-							if ($direct_classes['kernel']->v_usertype_get_int ($direct_settings['user']['type'])) { $f_rights_check = true; }
-						}
-					}
-
-					if ((!$f_rights_check)&&($f_entry_array['group_right']))
-					{
-						if ((direct_class_function_check ($direct_classes['kernel'],"v_group_user_check_right"))&&(isset ($f_entry_array['group_right']))) { $f_rights_check = $direct_classes['kernel']->v_group_user_check_right ($f_entry_array['group_right']); }
-					}
+					if (($f_entry_array['guests'])&&(($direct_settings['user']['type'] == "ex")||($direct_settings['user']['type'] == "gt"))) { $f_rights_check = true; }
+					if (($f_entry_array['members'])&&(direct_class_function_check ($direct_classes['kernel'],"v_usertype_get_int"))&&($direct_classes['kernel']->v_usertype_get_int ($direct_settings['user']['type']))) { $f_rights_check = true; }
+					if ((!$f_rights_check)&&($f_entry_array['group_right'])&&(direct_class_function_check ($direct_classes['kernel'],"v_group_user_check_right"))&&(isset ($f_entry_array['group_right']))) { $f_rights_check = $direct_classes['kernel']->v_group_user_check_right ($f_entry_array['group_right']); }
 
 					if (($f_active_check)&&($f_rights_check))
 					{
